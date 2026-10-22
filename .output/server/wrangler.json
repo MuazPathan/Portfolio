@@ -1,0 +1,22 @@
+{
+  "compatibility_date": "2026-10-22",
+  "main": "index.mjs",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "..\\public"
+  },
+  "name": "tanstack-start-ts-desktop-huiiiii",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "no_bundle": true,
+  "rules": [
+    {
+      "type": "ESModule",
+      "globs": [
+        "**/*.mjs",
+        "**/*.js"
+      ]
+    }
+  ]
+}
