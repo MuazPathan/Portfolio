@@ -1,5 +1,5 @@
 # Muaz Pathan
-**BCA Student | Aspiring Cloud Architect **
+BCA Student | Aspiring Cloud Architect 
 
 I am a Bachelor of Computer Applications (BCA) student with a professional background in retail operations, commercial management, and team leadership. I combine practical business experience with technical knowledge in web development, mobile application development, databases, and data analysis. My key strengths include analytical thinking, process optimization, attention to detail, and problem-solving.
 
