@@ -47,7 +47,12 @@ export async function generateChatReply(
     parts: [{ text: m.content }],
   }));
 
-  const candidateModels = ["gemini-flash-latest", "gemini-2.5-flash-lite", "gemini-3.5-flash-lite"];
+  const candidateModels = [
+    "gemini-3.5-flash-lite",
+    "gemini-3.5-flash",
+    "gemini-3.1-flash-lite",
+    "gemini-flash-lite-latest",
+  ];
   let lastError: unknown;
 
   for (const model of candidateModels) {

@@ -68,8 +68,12 @@ export default async function handler(req: Request) {
       );
     }
 
-    // Call Google Gemini API directly using global fetch
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
+    const candidateModels = [
+      "gemini-3.5-flash-lite",
+      "gemini-3.5-flash",
+      "gemini-3.1-flash-lite",
+      "gemini-flash-lite-latest",
+    ];
 
     const geminiPayload = {
       system_instruction: {
@@ -84,32 +88,42 @@ export default async function handler(req: Request) {
       },
     };
 
-    const geminiRes = await fetch(geminiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(geminiPayload),
-    });
+    let reply = "";
+    let lastError = "";
 
-    if (!geminiRes.ok) {
-      const errText = await geminiRes.text();
-      console.error("Gemini API Error:", geminiRes.status, errText);
-      return new Response(
-        JSON.stringify({
-          error: `Gemini API returned status ${geminiRes.status}: ${errText.slice(0, 120)}`,
-        }),
-        {
-          status: 502,
+    for (const model of candidateModels) {
+      try {
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+        const geminiRes = await fetch(geminiUrl, {
+          method: "POST",
           headers: { "Content-Type": "application/json" },
-        }
-      );
-    }
+          body: JSON.stringify(geminiPayload),
+          signal: AbortSignal.timeout(9000),
+        });
 
-    const data = await geminiRes.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (geminiRes.ok) {
+          const data = await geminiRes.json();
+          const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (text) {
+            reply = text;
+            break;
+          }
+        } else {
+          const errText = await geminiRes.text();
+          lastError = `Model ${model} returned ${geminiRes.status}: ${errText.slice(0, 100)}`;
+          console.warn(`[Gemini API] ${lastError}, trying next model...`);
+        }
+      } catch (err) {
+        lastError = err instanceof Error ? err.message : String(err);
+        console.warn(`[Gemini API] Model ${model} failed: ${lastError}, trying next model...`);
+      }
+    }
 
     if (!reply) {
       return new Response(
-        JSON.stringify({ error: "No response text candidate returned by Gemini." }),
+        JSON.stringify({
+          error: `Google Gemini service unavailable: ${lastError}`,
+        }),
         {
           status: 502,
           headers: { "Content-Type": "application/json" },
