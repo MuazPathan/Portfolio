@@ -1,11 +1,11 @@
 import { GoogleGenAI } from "@google/genai";
-import { PROFILE_CONTEXT } from "../../data/profileData";
+import { PROFILE_CONTEXT } from "../../data/profileData.ts";
 import fs from "node:fs";
 import path from "node:path";
 
 function getApiKey(): string {
-  if (process.env["GEMINI_API_KEY"]) {
-    return process.env["GEMINI_API_KEY"];
+  if (process.env["GEMINI_API_KEY"] && process.env["GEMINI_API_KEY"].trim()) {
+    return process.env["GEMINI_API_KEY"].trim();
   }
   try {
     const envPath = path.resolve(process.cwd(), ".env.local");
@@ -42,7 +42,7 @@ export async function generateChatReply(
     parts: [{ text: m.content }],
   }));
 
-  const candidateModels = ["gemini-3.5-flash-lite", "gemini-flash-latest", "gemini-3.8-flash"];
+  const candidateModels = ["gemini-flash-latest", "gemini-2.5-flash-lite", "gemini-3.5-flash-lite"];
   let lastError: unknown;
 
   for (const model of candidateModels) {

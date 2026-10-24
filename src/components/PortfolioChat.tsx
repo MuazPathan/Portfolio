@@ -141,22 +141,27 @@ export default function PortfolioChat() {
       });
 
       const data = await res.json();
-      if (data.reply) {
+      if (res.ok && data.reply) {
         const detected = detectTechStack(data.reply, text);
         setMessages([
           ...updated,
           { role: "assistant", content: data.reply, techStack: detected },
         ]);
       } else {
-        throw new Error(data.error);
+        throw new Error(data.error || "Failed to generate reply");
       }
-    } catch {
+    } catch (err: unknown) {
+      console.error("Chat error:", err);
+      const isKeyError =
+        err instanceof Error &&
+        (err.message.includes("GEMINI_API_KEY") || err.message.includes("not configured"));
       setMessages([
         ...updated,
         {
           role: "assistant",
-          content:
-            "Sorry, my healthcare sensors ran into an error. Feel free to contact Muaz directly via the 'Get in touch' button!",
+          content: isKeyError
+            ? "GEMINI_API_KEY is not set or needs redeploy on Vercel. Please check your Vercel Environment Variables and redeploy!"
+            : "Sorry, my healthcare sensors ran into an error. Feel free to contact Muaz directly via the 'Get in touch' button!",
         },
       ]);
     } finally {

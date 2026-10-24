@@ -6,7 +6,7 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import type { Plugin } from "vite";
-import { generateChatReply } from "./src/lib/chat-service";
+import { generateChatReply } from "./src/lib/chat-service.ts";
 
 function chatApiDevPlugin(): Plugin {
   return {
