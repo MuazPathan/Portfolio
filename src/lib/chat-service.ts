@@ -4,14 +4,19 @@ import fs from "node:fs";
 import path from "node:path";
 
 function getApiKey(): string {
-  if (process.env["GEMINI_API_KEY"] && process.env["GEMINI_API_KEY"].trim()) {
-    return process.env["GEMINI_API_KEY"].trim();
+  const envKey =
+    process.env["GEMINI_API_KEY"] ||
+    process.env["VITE_GEMINI_API_KEY"] ||
+    process.env["GOOGLE_API_KEY"] ||
+    process.env["GEMINI_KEY"];
+  if (envKey && envKey.trim()) {
+    return envKey.trim();
   }
   try {
     const envPath = path.resolve(process.cwd(), ".env.local");
     if (fs.existsSync(envPath)) {
       const content = fs.readFileSync(envPath, "utf8");
-      const match = content.match(/GEMINI_API_KEY=(.+)/);
+      const match = content.match(/(?:GEMINI_API_KEY|VITE_GEMINI_API_KEY|GOOGLE_API_KEY)=(.+)/);
       if (match && match[1]) {
         const key = match[1].trim();
         process.env["GEMINI_API_KEY"] = key;

@@ -26,12 +26,20 @@ export default async function handler(req: Request) {
   }
 
   try {
-    const apiKey = process.env.GEMINI_API_KEY?.trim();
+    const apiKey = (
+      process.env.GEMINI_API_KEY ||
+      process.env.VITE_GEMINI_API_KEY ||
+      process.env.GOOGLE_API_KEY ||
+      process.env.GEMINI_KEY ||
+      process.env.VITE_API_KEY
+    )?.trim();
+
     if (!apiKey) {
       console.error("GEMINI_API_KEY is missing in process.env");
       return new Response(
         JSON.stringify({
-          error: "GEMINI_API_KEY environment variable is missing in Vercel Project Settings.",
+          error:
+            "GEMINI_API_KEY environment variable is missing on Vercel. In Vercel Project Settings -> Environment Variables, ensure 'GEMINI_API_KEY' is added for the 'Production' environment, then redeploy.",
         }),
         {
           status: 500,
