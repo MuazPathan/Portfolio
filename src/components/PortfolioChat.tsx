@@ -112,7 +112,7 @@ export default function PortfolioChat() {
     {
       role: "assistant",
       content:
-        "Hi! Ask me anything about Muaz's cloud architecture standards, Kubernetes workflows, tech stack, or background!",
+        "Greetings! I am Metagross, Muaz Pathan's personal AI chatbot and supercomputer assistant. Ask me anything about Muaz's cloud architecture, projects, DevOps stack, or background!",
       techStack: getCoreFlagshipStack(),
     },
   ]);
@@ -165,7 +165,7 @@ export default function PortfolioChat() {
           role: "assistant",
           content: isDescriptive
             ? `Notice: ${msg}`
-            : "Sorry, my healthcare sensors ran into an error. Feel free to contact Muaz directly via the 'Get in touch' button!",
+            : "Sorry, my computational sensors ran into an error. Feel free to contact Muaz directly via the 'Get in touch' button!",
         },
       ]);
     } finally {
@@ -182,7 +182,7 @@ export default function PortfolioChat() {
           <div className="pointer-events-none absolute bottom-[102%] right-2 mb-2 w-56 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 z-50">
             <div className="relative border-2 border-black bg-[#FFE600] px-3 py-2 shadow-[3px_3px_0px_#000000]">
               <p className="text-[11px] font-black leading-snug text-black">
-                hi.. i am Muaz u cn ask me about me here
+                hi.. i am metagross Muaz&apos;s chat bot
               </p>
               {/* Speech bubble arrow pointing down */}
               <div className="absolute -bottom-2 right-10 h-0 w-0 border-x-7 border-x-transparent border-t-7 border-t-black" />
@@ -190,19 +190,19 @@ export default function PortfolioChat() {
             </div>
           </div>
 
-          {/* Marshmallow Robot Trigger (Baymax with Mochi Cat) */}
+          {/* Marshmallow Robot Trigger (Metagross Avatar) */}
           <button
             onClick={() => setIsOpen(true)}
-            aria-label="Ask About Me"
+            aria-label="Chat with Metagross"
             className="group relative flex flex-col items-center focus:outline-none transition-transform hover:scale-105 active:scale-95 cursor-pointer"
           >
             <div className="relative flex flex-col items-center">
-              {/* Animated Baymax Avatar */}
+              {/* Animated Avatar */}
               <div className="relative h-32 sm:h-40 aspect-[683/864] drop-shadow-[4px_4px_0px_#000000] transition-transform duration-200 group-hover:-translate-y-1">
-                {/* Baymax Body & Cat */}
+                {/* Body & Cat */}
                 <img
                   src="/baymax-body.png"
-                  alt="Baymax with Mochi"
+                  alt="Metagross"
                   className="absolute inset-0 h-full w-full object-contain animate-baymax-body"
                   loading="eager"
                 />
@@ -218,7 +218,7 @@ export default function PortfolioChat() {
 
               {/* Closed status pill */}
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 whitespace-nowrap border-2 border-black bg-white px-2 py-0.5 text-[9px] font-black uppercase tracking-tight text-black shadow-[2px_2px_0px_#000000] group-hover:bg-[#FFE600] transition-colors">
-                Ask About Me
+                Metagross
               </span>
             </div>
           </button>
@@ -231,23 +231,28 @@ export default function PortfolioChat() {
           {/* Header */}
           <div className="relative border-b-2 border-black bg-[#FDFBF7] px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              {/* Baymax Avatar Badge */}
+              {/* Avatar Badge */}
               <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-black bg-white shadow-[2px_2px_0px_#000000] overflow-hidden p-0.5">
                 <img
                   src="/baymax-head.png"
-                  alt="Baymax and Mochi"
+                  alt="Metagross"
                   className="h-full w-full object-contain"
                 />
               </div>
 
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-black uppercase tracking-tight text-black">
-                  Ask About Me
-                </h3>
-                <span
-                  className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"
-                  title="Online"
-                />
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-sm font-black uppercase tracking-tight text-black">
+                    Metagross
+                  </h3>
+                  <span
+                    className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"
+                    title="Online"
+                  />
+                </div>
+                <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-wider">
+                  Muaz&apos;s Chat Bot
+                </span>
               </div>
             </div>
 
@@ -352,7 +357,7 @@ export default function PortfolioChat() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything about Muaz..."
+              placeholder="Ask Metagross about Muaz..."
               className="flex-1 border-2 border-black bg-[#FDFBF7] px-3 py-2 text-xs font-medium text-black placeholder-zinc-500 shadow-[2px_2px_0px_#000000] focus:bg-white focus:outline-none"
             />
             <button
