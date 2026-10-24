@@ -154,6 +154,44 @@
 .reveal { opacity: 0; }
 .reveal.is-visible { animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
 
+@keyframes baymax-wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(12deg);
+  }
+  80% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes baymax-breathe {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.animate-baymax-wave {
+  transform-origin: 74.7% 47.5%;
+  animation: baymax-wave 2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-baymax-body {
+  animation: baymax-breathe 2s ease-in-out infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
