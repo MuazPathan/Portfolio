@@ -201,14 +201,14 @@ export default function PortfolioChat() {
               <div className="relative h-32 sm:h-40 aspect-[683/864] drop-shadow-[4px_4px_0px_#000000] transition-transform duration-200 group-hover:-translate-y-1">
                 {/* Baymax Body & Cat */}
                 <img
-                  src="/baymax-body.png?v=3"
+                  src="/baymax-body.png?v=4"
                   alt="Baymax with Mochi"
                   className="absolute inset-0 h-full w-full object-contain animate-baymax-body"
                   loading="eager"
                 />
                 {/* Articulated Waving Arm (Waves smoothly every 2 seconds with zero trail) */}
                 <img
-                  src="/baymax-arm.png?v=3"
+                  src="/baymax-arm.png?v=4"
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 h-full w-full object-contain animate-baymax-wave"
@@ -234,7 +234,7 @@ export default function PortfolioChat() {
               {/* Avatar Badge */}
               <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-black bg-white shadow-[2px_2px_0px_#000000] overflow-hidden p-0.5">
                 <img
-                  src="/baymax-head.png?v=3"
+                  src="/baymax-head.png?v=4"
                   alt="Baymax"
                   className="h-full w-full object-contain"
                 />
