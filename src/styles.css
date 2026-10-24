@@ -154,6 +154,30 @@
 .reveal { opacity: 0; }
 .reveal.is-visible { animation: rise 0.7s cubic-bezier(.2,.7,.2,1) forwards; }
 
+@keyframes metagross-hover {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    filter: drop-shadow(4px 4px 0px #000000);
+  }
+  25% {
+    transform: translateY(-5px) translateX(-2px) rotate(-1.5deg) scale(1.01);
+    filter: drop-shadow(4px 7px 0px #000000);
+  }
+  50% {
+    transform: translateY(-9px) translateX(0px) rotate(0deg) scale(1.02);
+    filter: drop-shadow(4px 11px 0px #000000);
+  }
+  75% {
+    transform: translateY(-4px) translateX(2px) rotate(1.5deg) scale(1.01);
+    filter: drop-shadow(4px 7px 0px #000000);
+  }
+}
+
+.animate-metagross-float {
+  animation: metagross-hover 3s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
 @keyframes baymax-wave {
   0%, 100% {
     transform: rotate(0deg);
