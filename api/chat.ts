@@ -32,15 +32,19 @@ export default async function handler(req: Request) {
       env["VITE_GEMINI_API_KEY"] ||
       env["GOOGLE_API_KEY"] ||
       env["GEMINI_KEY"] ||
-      env["VITE_API_KEY"]
+      env["VITE_API_KEY"] ||
+      env["API_KEY"] ||
+      env["GEMINI"]
     )?.trim();
 
     if (!apiKey) {
-      console.error("GEMINI_API_KEY is missing in process.env");
+      const visibleKeys = Object.keys(env).filter((k) => !k.startsWith("__"));
+      console.error("GEMINI_API_KEY is missing in process.env. Visible keys:", visibleKeys);
       return new Response(
         JSON.stringify({
           error:
-            "GEMINI_API_KEY environment variable is missing on Vercel. In Vercel Project Settings -> Environment Variables, ensure 'GEMINI_API_KEY' is added for the 'Production' environment, then redeploy.",
+            "GEMINI_API_KEY environment variable is not accessible in this deployment. Please verify that 'GEMINI_API_KEY' is added in Vercel Project Settings -> Environment Variables for the 'Production' environment, and click Redeploy.",
+          debugEnvKeys: visibleKeys,
         }),
         {
           status: 500,
