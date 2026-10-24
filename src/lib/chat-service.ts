@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import { PROFILE_CONTEXT } from "../../data/profileData.ts";
+import { PROFILE_CONTEXT } from "../../data/profileData";
 import fs from "node:fs";
 import path from "node:path";
 

@@ -152,15 +152,19 @@ export default function PortfolioChat() {
       }
     } catch (err: unknown) {
       console.error("Chat error:", err);
-      const isKeyError =
-        err instanceof Error &&
-        (err.message.includes("GEMINI_API_KEY") || err.message.includes("not configured"));
+      const msg = err instanceof Error ? err.message : "";
+      const isDescriptive =
+        msg.includes("GEMINI_API_KEY") ||
+        msg.includes("API") ||
+        msg.includes("configured") ||
+        msg.includes("Vercel");
+
       setMessages([
         ...updated,
         {
           role: "assistant",
-          content: isKeyError
-            ? "GEMINI_API_KEY is not set or needs redeploy on Vercel. Please check your Vercel Environment Variables and redeploy!"
+          content: isDescriptive
+            ? `Notice: ${msg}`
             : "Sorry, my healthcare sensors ran into an error. Feel free to contact Muaz directly via the 'Get in touch' button!",
         },
       ]);
