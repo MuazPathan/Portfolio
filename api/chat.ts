@@ -26,12 +26,13 @@ export default async function handler(req: Request) {
   }
 
   try {
+    const env = (process.env ?? {}) as Record<string, string | undefined>;
     const apiKey = (
-      process.env.GEMINI_API_KEY ||
-      process.env.VITE_GEMINI_API_KEY ||
-      process.env.GOOGLE_API_KEY ||
-      process.env.GEMINI_KEY ||
-      process.env.VITE_API_KEY
+      env["GEMINI_API_KEY"] ||
+      env["VITE_GEMINI_API_KEY"] ||
+      env["GOOGLE_API_KEY"] ||
+      env["GEMINI_KEY"] ||
+      env["VITE_API_KEY"]
     )?.trim();
 
     if (!apiKey) {
