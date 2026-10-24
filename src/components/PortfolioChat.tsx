@@ -197,12 +197,21 @@ export default function PortfolioChat() {
             className="group relative flex flex-col items-center focus:outline-none transition-transform hover:scale-105 active:scale-95 cursor-pointer"
           >
             <div className="relative flex flex-col items-center">
-              {/* Animated Baymax GIF Avatar */}
+              {/* Animated Baymax Avatar (Clean CSS wave, zero black ghost trails) */}
               <div className="relative h-32 sm:h-40 aspect-[683/864] drop-shadow-[4px_4px_0px_#000000] transition-transform duration-200 group-hover:-translate-y-1">
+                {/* Baymax Body & Cat */}
                 <img
-                  src="/baymax-waving.gif"
-                  alt="Baymax"
-                  className="h-full w-full object-contain"
+                  src="/baymax-body.png"
+                  alt="Baymax with Mochi"
+                  className="absolute inset-0 h-full w-full object-contain animate-baymax-body"
+                  loading="eager"
+                />
+                {/* Articulated Waving Arm (Waves smoothly every 2 seconds with zero trail) */}
+                <img
+                  src="/baymax-arm.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-contain animate-baymax-wave"
                   loading="eager"
                 />
               </div>
