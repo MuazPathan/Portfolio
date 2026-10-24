@@ -197,12 +197,40 @@ export default function PortfolioChat() {
             className="group relative flex flex-col items-center focus:outline-none transition-transform hover:scale-105 active:scale-95 cursor-pointer"
           >
             <div className="relative flex flex-col items-center">
-              {/* Floating Metagross Avatar */}
-              <div className="relative w-36 sm:w-44 aspect-[718/366] transition-transform duration-200 group-hover:-translate-y-1">
+              {/* Dynamic Articulated Metagross Avatar */}
+              <div className="relative w-36 sm:w-44 aspect-[718/366] transition-transform duration-200 group-hover:-translate-y-1 drop-shadow-[4px_4px_0px_#000000]">
+                {/* 1. Base Floating Body (Dome, Face Cross, Rear Chassis) */}
                 <img
-                  src="/metagross.png"
+                  src="/metagross-body.png"
                   alt="Metagross"
-                  className="h-full w-full object-contain animate-metagross-float"
+                  className="absolute inset-0 h-full w-full object-contain animate-metagross-body"
+                  loading="eager"
+                />
+
+                {/* 2. Articulated Right Hand / Giant Claw (Counter-strikes & clamps) */}
+                <img
+                  src="/metagross-arm-r.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-contain animate-metagross-arm-r group-hover:animate-none group-hover:-translate-x-2 group-hover:translate-y-1 group-hover:-rotate-4 transition-transform duration-200"
+                  loading="eager"
+                />
+
+                {/* 3. Articulated Left Hand / Giant Claw (Meteor Mash Bullet Punch strike) */}
+                <img
+                  src="/metagross-arm-l.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-contain animate-metagross-arm-l group-hover:animate-none group-hover:translate-x-2 group-hover:translate-y-1 group-hover:rotate-6 transition-transform duration-200"
+                  loading="eager"
+                />
+
+                {/* 4. Glowing Red Psychic Eyes Overlay */}
+                <img
+                  src="/metagross-eyes.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-contain animate-metagross-eyes pointer-events-none group-hover:opacity-100"
                   loading="eager"
                 />
               </div>

@@ -178,6 +178,104 @@
   will-change: transform, filter;
 }
 
+/* Metagross Floating Levitation Body */
+@keyframes metagross-body-hover {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+}
+
+/* Metagross Left Arm: Hydraulic Articulation, Meteor Mash / Bullet Punch Strike */
+@keyframes metagross-arm-l-action {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+  15% {
+    transform: translate(-3px, -2px) rotate(-3deg) scale(0.99);
+  }
+  30% {
+    transform: translate(12px, 6px) rotate(7deg) scale(1.05);
+  }
+  45% {
+    transform: translate(8px, 4px) rotate(4deg) scale(1.03);
+  }
+  65% {
+    transform: translate(0px, -2px) rotate(-1deg) scale(1);
+  }
+  80% {
+    transform: translate(4px, 1px) rotate(2deg) scale(1.01);
+  }
+}
+
+/* Metagross Right Arm: Counter Balance & Strike */
+@keyframes metagross-arm-r-action {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(2px, -1px) rotate(2deg) scale(1);
+  }
+  40% {
+    transform: translate(-4px, -2px) rotate(-2deg) scale(0.99);
+  }
+  55% {
+    transform: translate(-10px, 6px) rotate(-6deg) scale(1.04);
+  }
+  70% {
+    transform: translate(-6px, 3px) rotate(-3deg) scale(1.02);
+  }
+  85% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+  }
+}
+
+/* Metagross Psychic Eye Glow Pulse */
+@keyframes metagross-eyes-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    filter: drop-shadow(0 0 2px rgba(255, 0, 40, 0.4));
+  }
+  30%, 55% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 40, 0.9)) drop-shadow(0 0 12px rgba(255, 50, 50, 0.6));
+  }
+  70% {
+    opacity: 0.5;
+    filter: drop-shadow(0 0 3px rgba(255, 0, 40, 0.5));
+  }
+}
+
+.animate-metagross-body {
+  animation: metagross-body-hover 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-metagross-arm-l {
+  transform-origin: 37.6% 43.7%;
+  animation: metagross-arm-l-action 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-metagross-arm-r {
+  transform-origin: 64.1% 49.2%;
+  animation: metagross-arm-r-action 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-metagross-eyes {
+  animation: metagross-eyes-pulse 2.6s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
 @keyframes baymax-wave {
   0%, 100% {
     transform: rotate(0deg);
